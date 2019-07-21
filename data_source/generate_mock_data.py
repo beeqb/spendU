@@ -38,3 +38,4 @@ class GenerateMockData:
                 TIMESTAMP : fake_timestamp
             }
             dataset.append(single_data_entry)
+            return dataset
