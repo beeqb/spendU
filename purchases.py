@@ -28,17 +28,6 @@ class Purchases(Resource):
             "time": time
         }  
 
-    def createEntryWithId(_id, self, currency, purchase_title, purchase_description, amount, location, time):
-        return {
-            "_id": _id,
-            "currency": currency,
-            "purchase_title": purchase_title,
-            "purchase_description": purchase_description,
-            "amount": amount, 
-            "location": location,
-            "time": time
-        } 
-
     def add_single_purchase(self, entry):
         self.db.insert_one(entry)
 
@@ -56,8 +45,7 @@ class Purchases(Resource):
 
     def get_purchase_list(self):
         return dumps(self.db.find({}))
-
-    
+  
     def entryExists(self, purchase_id):
         for entry in self.db.find({ "_id": ObjectId(purchase_id)}):
             if dumps(entry) == "":
